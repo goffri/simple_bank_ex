@@ -18,10 +18,10 @@ public class ModelMapperConfig {
 
         //these configs ensure that when making a copy of an existing entity the
         // selected fields are not copied over, in this case the Id
-        modelMapper.typeMap(Item.class, Item.class)
-                .addMappings(mapper -> mapper.skip(Item::setId));
-        modelMapper.typeMap(Rune.class, Rune.class)
-                .addMappings(mapper -> mapper.skip(Rune::setId));
+//        modelMapper.typeMap(Item.class, Item.class)
+//                .addMappings(mapper -> mapper.skip(Item::setId));
+//        modelMapper.typeMap(Rune.class, Rune.class)
+//                .addMappings(mapper -> mapper.skip(Rune::setId));
 
 //        modelMapper.createTypeMap(Dwarf.class, DwarfDetailsWithItems.class)
 //                .addMapping(dwarf -> dwarf.getName(), DwarfDetailsWithItems::setName);
