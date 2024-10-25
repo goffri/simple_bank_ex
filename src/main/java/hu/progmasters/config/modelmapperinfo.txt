@@ -1,0 +1,57 @@
+1. Standard Matching Strategy
+
+Default Behavior: This is the default matching strategy used by ModelMapper.
+It tries to match fields loosely based on the field names and types, without being too strict.
+How it works: If the field names are similar or follow common naming conventions
+(like sourceName to targetName or getSourceName() to setTargetName()),
+ModelMapper will attempt to match them.
+
+Example:
+firstName in source → firstName in target
+fullName in source → full_name in target (if naming conventions like snake case are used)
+
+ModelMapper modelMapper = new ModelMapper();
+modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.LOOSE);
+______________________________________________________________________________
+2. Strict Matching Strategy
+
+Behavior: This strategy is more rigid and requires the field names and types to match exactly.
+If even a slight difference exists in the field names, ModelMapper will not match them.
+How it works: Only fields that are an exact match by name and type will be mapped.
+
+Example:
+firstName in source → firstName in target (matched)
+fullName in source → fullName in target (matched)
+firstName in source → first_name in target (not matched)
+
+modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
+_____________________________________________________________________________
+3. Loose Matching Strategy
+
+Behavior: The loose strategy is the most relaxed matching strategy.
+It tries to map fields even if there are differences in casing, underscores,
+or prefixes/suffixes. This is useful when the field names in the source and target
+are not exactly the same but still convey the same meaning.
+How it works: It will attempt to match fields based on common naming conventions
+and ignore minor differences like underscores, abbreviations, or even prefixes/suffixes.
+
+Example:
+firstName in source → first_name in target (matched)
+first_name in source → FirstName in target (matched)
+srcFirstName in source → firstName in target (matched)
+
+modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.LOOSE);
+____________________________________________________________________________
+4. Exact Matching Strategy
+
+Behavior: The exact matching strategy is even more strict than the standard strategy.
+It requires exact name and type matches, including the casing (upper/lower case).
+Any small differences in the name or structure will prevent matching.
+How it works: Only fields that match perfectly in both name and type will be mapped.
+
+Example:
+firstName in source → firstName in target (matched)
+FirstName in source → firstName in target (not matched, because of case difference)
+full_name in source → fullName in target (not matched)
+
+modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.EXACT);
