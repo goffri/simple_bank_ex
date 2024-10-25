@@ -22,8 +22,8 @@ public class GlobalExceptionHandler {
         return new ResponseEntity<>(validationErrors, HttpStatus.BAD_REQUEST);
     }
 
-    @ExceptionHandler(AccountWithThisIdNotFoundException.class)
-    public ResponseEntity<List<ValidationError>> handleAccountNotFound(AccountWithThisIdNotFoundException exception) {
+    @ExceptionHandler(AccountWithThisUserIdNotFoundException.class)
+    public ResponseEntity<List<ValidationError>> handleAccountNotFound(AccountWithThisUserIdNotFoundException exception) {
         return new ResponseEntity<>(
                 List.of(new ValidationError("userId", "no account found with userId: " + exception.getUserId())),
                 HttpStatus.BAD_REQUEST);
@@ -43,13 +43,20 @@ public class GlobalExceptionHandler {
                 List.of(new ValidationError("userId", "no user found with id: " + exception.getUserId())),
                 HttpStatus.BAD_REQUEST);
     }
-//
-//    @ExceptionHandler(ItemNotFoundException.class)
-//    public ResponseEntity<List<ValidationError>> handleItemNotFound(ItemNotFoundException exception) {
-//        return new ResponseEntity<>(
-//                List.of(new ValidationError("itemId", "no item found with id: " + exception.getItemId())),
-//                HttpStatus.BAD_REQUEST);
-//    }
+
+    @ExceptionHandler(AccountNotFoundWithIdException.class)
+    public ResponseEntity<List<ValidationError>> handleAccountNotFound(AccountNotFoundWithIdException exception) {
+        return new ResponseEntity<>(
+                List.of(new ValidationError("accountId", "no account found with id: " + exception.getId())),
+                HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(NotEnoughFundsFoundException.class)
+    public ResponseEntity<List<ValidationError>> handleNotEnoughFundsNotFound(NotEnoughFundsFoundException exception) {
+        return new ResponseEntity<>(
+                List.of(new ValidationError("transactionId", "not enough money found with id: " + exception.getId())),
+                HttpStatus.BAD_REQUEST);
+    }
 //
 //    @ExceptionHandler(MineIsAbandonedException.class)
 //    public ResponseEntity<List<ValidationError>> handleMineIsAbandoned() {

@@ -54,4 +54,5 @@ public class UserService {
         modelMapper.map(user, command);
         return modelMapper.map(user, UserDetails.class);
     }
+
 }

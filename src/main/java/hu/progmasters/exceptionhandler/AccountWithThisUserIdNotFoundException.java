@@ -3,11 +3,11 @@ package hu.progmasters.exceptionhandler;
 import lombok.Getter;
 
 @Getter
-public class AccountWithThisIdNotFoundException extends RuntimeException {
+public class AccountWithThisUserIdNotFoundException extends RuntimeException {
 
     private final Long userId;
 
-    public AccountWithThisIdNotFoundException(Long userId) {
+    public AccountWithThisUserIdNotFoundException(Long userId) {
         this.userId = userId;
     }
 }

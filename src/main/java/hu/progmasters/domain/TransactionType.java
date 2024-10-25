@@ -2,7 +2,7 @@ package hu.progmasters.domain;
 
 public enum TransactionType {
 
-    DEPOSIT, WITHDRAWAL
+    DEPOSIT, WITHDRAWAL, TRANSFER
 
 //    private final String displayName;
 //    private TransactionType(String displayName) {

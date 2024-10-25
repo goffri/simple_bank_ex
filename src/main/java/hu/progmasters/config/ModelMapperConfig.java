@@ -1,5 +1,7 @@
 package hu.progmasters.config;
 
+import hu.progmasters.domain.Account;
+import hu.progmasters.domain.Transaction;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.convention.MatchingStrategies;
 import org.springframework.context.annotation.Bean;
@@ -12,14 +14,14 @@ public class ModelMapperConfig {
     public ModelMapper getModelMapper() {
         ModelMapper modelMapper = new ModelMapper();
         modelMapper.getConfiguration()
-                .setMatchingStrategy(MatchingStrategies.STANDARD);
+                .setMatchingStrategy(MatchingStrategies.STRICT);
 
         //these configs ensure that when making a copy of an existing entity the
         // selected fields are not copied over, in this case the Id
-//        modelMapper.typeMap(Item.class, Item.class)
-//                .addMappings(mapper -> mapper.skip(Item::setId));
-//        modelMapper.typeMap(Rune.class, Rune.class)
-//                .addMappings(mapper -> mapper.skip(Rune::setId));
+        modelMapper.typeMap(Account.class, Account.class)
+                .addMappings(mapper -> mapper.skip(Account::setId));
+        modelMapper.typeMap(Transaction.class, Transaction.class)
+                .addMappings(mapper -> mapper.skip(Transaction::setId));
 
 //        modelMapper.createTypeMap(Dwarf.class, DwarfDetailsWithItems.class)
 //                .addMapping(dwarf -> dwarf.getName(), DwarfDetailsWithItems::setName);
