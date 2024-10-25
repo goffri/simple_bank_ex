@@ -29,7 +29,7 @@ public class Account {
     @JoinColumn(name = "user_id")
     private User user;
 
-    @OneToMany(mappedBy = "")
+    @OneToMany(mappedBy = "account")
     private List<Transaction> transactions;
 
 

@@ -1,0 +1,33 @@
+Feladatok:
+
+    Backend fejlesztés:
+        Felhasználó CRUD műveletek:
+            POST /users: Új felhasználó létrehozása.
+            GET /users/{id}: Felhasználó adatainak lekérdezése.
+            PUT /users/{id}: Felhasználó adatainak módosítása.
+            DELETE /users/{id}: Felhasználó törlése.
+Account CRUD műveletek:
+            POST /users/{userId}/accounts: Új bankszámla létrehozása egy felhasználóhoz.
+            GET /accounts/{accountId}: Bankszámla adatainak lekérdezése (egyben lekérhető az összes hozzá tartozó tranzakció).
+        Tranzakciók kezelése:
+            POST "/reference/receiver/{receiverId}": Új utalás
+            A tranzakció csak akkor jöhet létre, ha a kifizetés esetén a számla egyenlege nem lesz negatív.
+            GET /accounts/{accountId}/transactions: Egy adott számlához tartozó összes tranzakció lekérdezése.
+
+    Validációk és hibakezelés:
+        A tranzakció összege nem lehet nulla vagy negatív.
+        Kifizetés esetén a számla egyenlege nem lehet negatív.
+        A felhasználó e-mail címe legyen egyedi.
+
+    Számítások:
+        Minden tranzakció után frissítsd a számla egyenlegét, hogy mindig helyes adatokat adjon vissza.
+idő hiány tekintetére most csak a bonyolultabb pénz mozgást csinálnánk és hagynánk a sima be és kifizetést
+ezt majd adatbáziba közvetlen beírva vagy a mapperen keresztül bedobhattok egy összeget amikor a felhasználó kapja az accountot
+akkor alapból annyiról indul
+és ezekből lehet lekérdezni olyanokat, hogy melyikvolt a legkisebb, legnagyobb utalás vagy melyikvolt az 5. legnagyobb
+melyik vannak az átlag alatt
+fölött
+stb
+
+Bonusz feladat ha megvagytok a lekérdezésekkel, akkor másoljatok le egy accountot az összes adattal ami benne van plusz
+az össze tranzakciót is vigyétek át ami már az új account id-ket tartalmazza(ez már hardcore) hint: ne töröljétek az előző accountot
