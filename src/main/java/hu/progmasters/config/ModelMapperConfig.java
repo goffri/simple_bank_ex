@@ -1,7 +1,5 @@
 package hu.progmasters.config;
 
-import hu.progmasters.dwarfminingapp2.domain.Item;
-import hu.progmasters.dwarfminingapp2.domain.Rune;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.convention.MatchingStrategies;
 import org.springframework.context.annotation.Bean;
